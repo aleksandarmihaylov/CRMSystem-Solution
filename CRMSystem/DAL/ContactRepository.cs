@@ -23,9 +23,131 @@ namespace CRMSystem.DAL
                 command.CommandText = "INSERT INTO Contact(FirstName, LastName, Address, City, Zip, Phone) values('" + contact.FirstName + "','" + contact.LastName + "', '" + contact.Address + "', '" + contact.City + "', '" + contact.Zip + "', '" + contact.Phone + "' )";
                 command.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //logging
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public List<Contact> LoadAllContacts()
+        {
+            List<Contact> result = new List<Contact>();
+
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = Connection.ConnectionString;
+
+            try
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT Id, FirstName, LastName, Address, City, Zip, Phone FROM Contact";
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Contact contact = new Contact();
+                    contact.Id = reader.GetInt32(0);
+                    contact.FirstName = reader.GetString(1);
+                    contact.LastName = reader.GetString(2);
+                    contact.Address = reader.GetString(3);
+                    contact.City = reader.GetString(4);
+                    contact.Zip = reader.GetString(5);
+                    contact.Phone = reader.GetString(6);
+
+                    result.Add(contact);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                //logging
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
+        }
+
+        public Contact LoadContact(int id)
+        {
+            Contact result = new Contact();
+
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = Connection.ConnectionString;
+
+            try
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT Id, FirstName, LastName, Address, City, Zip, Phone FROM Contact WHERE ID = " + id;
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                Contact contact = new Contact();
+                contact.Id = reader.GetInt32(0);
+                contact.FirstName = reader.GetString(1);
+                contact.LastName = reader.GetString(2);
+                contact.Address = reader.GetString(3);
+                contact.City = reader.GetString(4);
+                contact.Zip = reader.GetString(5);
+                contact.Phone = reader.GetString(6);
+
+                result = contact;
+
+            }
+            catch (Exception ex)
+            {
+                //logging
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
+        }
+
+        public void UpdateContact(Contact contact)
+        {
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = Connection.ConnectionString;
+
+            try
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "UPDATE Contact set FirstName ='" + contact.FirstName + "', LastName ='" + contact.LastName + "', Address ='" + contact.Address + "', City ='" + contact.City + "', Zip ='" + contact.Zip + "', Phone ='" + contact.Phone + "' WHERE ID = " + contact.Id;
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //logging
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void DeleteContact (int id)
+        {
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = Connection.ConnectionString;
+
+            try
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "DELETE FROM Contact WHERE ID = "+ id;
+                command.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                //logg
             }
             finally
             {

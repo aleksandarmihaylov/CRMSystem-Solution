@@ -139,7 +139,7 @@ namespace CRMSystem.DAL
             }
         }
 
-        public void DeleteRoom(int id)
+        public void DeleteCompany(int id)
         {
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = Connection.ConnectionString;

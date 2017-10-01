@@ -24,5 +24,7 @@ namespace CRMSystem.ViewModels
             }
         }
 
+        public List<ContactVM> Contacts { get; set; }
+
     }
 }

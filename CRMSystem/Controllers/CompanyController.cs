@@ -117,7 +117,7 @@ namespace CRMSystem.Controllers
         public ActionResult Delete(int id)
         {
             CompanyRepository companyRepository = new CompanyRepository();
-            companyRepository.DeleteRoom(id);
+            companyRepository.DeleteCompany(id);
             return RedirectToAction("Index");
         }
     }

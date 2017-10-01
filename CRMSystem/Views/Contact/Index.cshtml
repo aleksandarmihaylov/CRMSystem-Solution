@@ -6,11 +6,11 @@
 
 <h2>All Contacts</h2>
 
-@*<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
+            <th>Full Name</th>
             <th>Address</th>
             <th>City</th>
             <th>Zip</th>
@@ -19,24 +19,24 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var companyvm in Model.Companies)
+        @foreach (var contactvm in Model.Contacts)
         {
             <tr>
-                <td>@companyvm.Id</td>
-                <td>@companyvm.Name</td>
-                <td>@companyvm.Address</td>
-                <td>@companyvm.City</td>
-                <td>@companyvm.Zip</td>
-                <td>@companyvm.Phone</td>
+                <td>@contactvm.Id</td>
+                <td>@contactvm.FullName</td>
+                <td>@contactvm.Address</td>
+                <td>@contactvm.City</td>
+                <td>@contactvm.Zip</td>
+                <td>@contactvm.Phone</td>
                 <td>
-                    <a href="/Company/Show/@companyvm.Id" class="btn btn-primary btn-xs">Show</a>
-                    <a href="/Company/Edit/@companyvm.Id" class="btn btn-warning btn-xs">Edit</a>
-                    <a href="/Company/Delete/@companyvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('You are about to delete a contact. Are you sure you want to continue?')">Delete</a>
+                    <a href="/Contact/Show/@contactvm.Id" class="btn btn-primary btn-xs">Show</a>
+                    <a href="/Contact/Edit/@contactvm.Id" class="btn btn-warning btn-xs">Edit</a>
+                    <a href="/Contact/Delete/@contactvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('You are about to delete a contact. Are you sure you want to continue?')">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<a href="/Company/Create" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Create a new contact</a><br />*@
+<a href="/Company/Create" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Create a new contact</a><br />
 
 
