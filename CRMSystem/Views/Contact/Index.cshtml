@@ -1,12 +1,12 @@
-﻿@model CRMSystem.ViewModels.CompanyVM
+﻿@model CRMSystem.ViewModels.ContactVM
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>All Companies</h2>
+<h2>All Contacts</h2>
 
-<table class="table table-striped table-bordered">
+@*<table class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Id</th>
@@ -31,12 +31,12 @@
                 <td>
                     <a href="/Company/Show/@companyvm.Id" class="btn btn-primary btn-xs">Show</a>
                     <a href="/Company/Edit/@companyvm.Id" class="btn btn-warning btn-xs">Edit</a>
-                    <a href="/Company/Delete/@companyvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('You are about to delete a Company. Are you sure you want to continue?')">Delete</a>
+                    <a href="/Company/Delete/@companyvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('You are about to delete a contact. Are you sure you want to continue?')">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<a href="/Company/Create" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Create a new company</a><br />
+<a href="/Company/Create" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Create a new contact</a><br />*@
 
 
