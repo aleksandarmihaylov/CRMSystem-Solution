@@ -153,10 +153,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\CompanyRepository.cs" />
     <Compile Include="DAL\Connection.cs" />
+    <Compile Include="DAL\ContactRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CompanyVM.cs" />
     <Compile Include="ViewModels\ContactVM.cs" />

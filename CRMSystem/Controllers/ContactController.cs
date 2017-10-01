@@ -1,4 +1,6 @@
-﻿using CRMSystem.ViewModels;
+﻿using CRMSystem.DAL;
+using CRMSystem.Models;
+using CRMSystem.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,18 @@ namespace CRMSystem.Controllers
         [HttpPost]
         public ActionResult Create(ContactVM model)
         {
+            //Creating a contact object from the VM
+            Contact contact = new Contact();
+            contact.FirstName = model.FirstName;
+            contact.LastName = model.LastName;
+            contact.Address = model.Address;
+            contact.City = model.City;
+            contact.Zip = model.Zip;
+            contact.Phone = model.Phone;
+
+            ContactRepository contactRepository = new DAL.ContactRepository();
+            contactRepository.SaveContact(contact);
+
             return RedirectToAction("Index");
         }
 
