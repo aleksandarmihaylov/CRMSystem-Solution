@@ -6,3 +6,85 @@ System.InvalidOperationException: ExecuteNonQuery requires an open and available
    at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
    at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
    at CRMSystem.DAL.ContactRepository.SaveContact(Contact contact) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 24
+--------------------
+2.10.2017 г. 14:35:10
+--------------------
+System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'CompanyId', table 'CentiSoftCRM.dbo.Contact'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at CRMSystem.DAL.ContactRepository.SaveContact(Contact contact) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 33
+ClientConnectionId:2b52d85c-403c-4a89-9bac-047fa658e63e
+Error Number:515,State:2,Class:16
+--------------------
+2.10.2017 г. 14:52:18
+--------------------
+System.Data.SqlClient.SqlException (0x80131904): The variable name '@phone' has already been declared. Variable names must be unique within a query batch or stored procedure.
+Must declare the scalar variable "@companyid".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at CRMSystem.DAL.ContactRepository.SaveContact(Contact contact) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 35
+ClientConnectionId:d049fdaf-108f-4489-884d-38f592eb1d17
+Error Number:134,State:1,Class:15
+--------------------
+2.10.2017 г. 15:02:24
+--------------------
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 110
+--------------------
+2.10.2017 г. 15:02:31
+--------------------
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 110
+--------------------
+2.10.2017 г. 15:02:37
+--------------------
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 110
+--------------------
+2.10.2017 г. 15:02:39
+--------------------
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 110
+--------------------
+2.10.2017 г. 15:03:37
+--------------------
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 110
+--------------------
+2.10.2017 г. 15:04:40
+--------------------
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 110

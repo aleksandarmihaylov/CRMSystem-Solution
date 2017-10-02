@@ -14,6 +14,7 @@ namespace CRMSystem.ViewModels
         public string City { get; set; }
         public string Zip { get; set; }
         public string Phone { get; set; }
+        public int CompanyId { get; set; }
 
         public string FullName
         {
@@ -24,6 +25,5 @@ namespace CRMSystem.ViewModels
         }
 
         public List<ContactVM> Contacts { get; set; }
-
     }
 }

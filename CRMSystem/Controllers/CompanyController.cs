@@ -63,6 +63,7 @@ namespace CRMSystem.Controllers
         // GET: Company/Show
         public ActionResult Show(int id)
         {
+            //Showing a company with a list of contacts
             CompanyRepository companyRepository = new CompanyRepository();
             Company company = companyRepository.LoadCompany(id);
             CompanyVM model = new CompanyVM();

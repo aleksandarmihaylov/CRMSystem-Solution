@@ -29,6 +29,7 @@ namespace CRMSystem.Controllers
                 contactvm.City = contact.City;
                 contactvm.Zip = contact.Zip;
                 contactvm.Phone = contact.Phone;
+                contactvm.CompanyId = contact.CompanyId;
 
                 contactVMs.Add(contactvm);
             }
@@ -55,6 +56,7 @@ namespace CRMSystem.Controllers
             contact.City = model.City;
             contact.Zip = model.Zip;
             contact.Phone = model.Phone;
+            contact.CompanyId = model.CompanyId;
 
             ContactRepository contactRepository = new DAL.ContactRepository();
             contactRepository.SaveContact(contact);
@@ -75,6 +77,7 @@ namespace CRMSystem.Controllers
             model.City = contact.City;
             model.Zip = contact.Zip;
             model.Phone = contact.Phone;
+            model.CompanyId = contact.CompanyId;
             return View(model);
         }
         // GET: Contact/Edit
@@ -91,6 +94,7 @@ namespace CRMSystem.Controllers
             model.City = contact.City;
             model.Zip = contact.Zip;
             model.Phone = contact.Phone;
+            model.CompanyId = contact.CompanyId;
 
             return View(model);
         }
@@ -106,6 +110,7 @@ namespace CRMSystem.Controllers
             contact.City = model.City;
             contact.Zip = model.Zip;
             contact.Phone = model.Phone;
+            contact.CompanyId = model.CompanyId;
 
             ContactRepository contactRepository = new ContactRepository();
 

@@ -2,6 +2,7 @@
 using CRMSystem.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -20,7 +21,16 @@ namespace CRMSystem.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "INSERT INTO Contact(FirstName, LastName, Address, City, Zip, Phone) values('" + contact.FirstName + "','" + contact.LastName + "', '" + contact.Address + "', '" + contact.City + "', '" + contact.Zip + "', '" + contact.Phone + "' )";
+                //Fixing SQL Injection attack possibility
+                //command.CommandText = "INSERT INTO Contact(FirstName, LastName, Address, City, Zip, Phone) values('" + contact.FirstName + "','" + contact.LastName + "', '" + contact.Address + "', '" + contact.City + "', '" + contact.Zip + "', '" + contact.Phone + "' )";
+                command.CommandText = "INSERT INTO Contact(FirstName, LastName, Address, City, Zip, Phone, CompanyId) values(@firstname, @lastname, @address, @city, @zip, @phone, @companyid )";
+                command.Parameters.Add("@firstname", SqlDbType.NVarChar).Value = contact.FirstName;
+                command.Parameters.Add("@lastname", SqlDbType.NVarChar).Value = contact.LastName;
+                command.Parameters.Add("@address", SqlDbType.NVarChar).Value = contact.Address;
+                command.Parameters.Add("@city", SqlDbType.NVarChar).Value = contact.City;
+                command.Parameters.Add("@zip", SqlDbType.NVarChar).Value = contact.Zip;
+                command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = contact.Phone;
+                command.Parameters.Add("@companyid", SqlDbType.NVarChar).Value = contact.CompanyId;
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -45,7 +55,7 @@ namespace CRMSystem.DAL
                 connection.Open();
 
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT Id, FirstName, LastName, Address, City, Zip, Phone FROM Contact";
+                command.CommandText = "SELECT Id, FirstName, LastName, Address, City, Zip, Phone, CompanyId FROM Contact";
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -58,6 +68,7 @@ namespace CRMSystem.DAL
                     contact.City = reader.GetString(4);
                     contact.Zip = reader.GetString(5);
                     contact.Phone = reader.GetString(6);
+                    contact.CompanyId = reader.GetInt32(7);
 
                     result.Add(contact);
 
@@ -85,7 +96,7 @@ namespace CRMSystem.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT Id, FirstName, LastName, Address, City, Zip, Phone FROM Contact WHERE ID = " + id;
+                command.CommandText = "SELECT Id, FirstName, LastName, Address, City, Zip, Phone, CompanyId FROM Contact WHERE ID = " + id;
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
                 Contact contact = new Contact();
@@ -96,6 +107,7 @@ namespace CRMSystem.DAL
                 contact.City = reader.GetString(4);
                 contact.Zip = reader.GetString(5);
                 contact.Phone = reader.GetString(6);
+                contact.CompanyId = reader.GetInt32(7);
 
                 result = contact;
 
@@ -120,7 +132,16 @@ namespace CRMSystem.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "UPDATE Contact set FirstName ='" + contact.FirstName + "', LastName ='" + contact.LastName + "', Address ='" + contact.Address + "', City ='" + contact.City + "', Zip ='" + contact.Zip + "', Phone ='" + contact.Phone + "' WHERE ID = " + contact.Id;
+                //Fixing SQL Injection attack possibility
+                //command.CommandText = "UPDATE Contact set FirstName ='" + contact.FirstName + "', LastName ='" + contact.LastName + "', Address ='" + contact.Address + "', City ='" + contact.City + "', Zip ='" + contact.Zip + "', Phone ='" + contact.Phone + "' WHERE ID = " + contact.Id;
+                command.CommandText = "UPDATE Contact set FirstName = @firstname, LastName = @lastname, Address = @address, City = @city, Zip = @zip, Phone = @phone, CompanyId = @companyid WHERE ID = " + contact.Id;
+                command.Parameters.Add("@firstname", SqlDbType.NVarChar).Value = contact.FirstName;
+                command.Parameters.Add("@lastname", SqlDbType.NVarChar).Value = contact.LastName;
+                command.Parameters.Add("@address", SqlDbType.NVarChar).Value = contact.Address;
+                command.Parameters.Add("@city", SqlDbType.NVarChar).Value = contact.City;
+                command.Parameters.Add("@zip", SqlDbType.NVarChar).Value = contact.Zip;
+                command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = contact.Phone;
+                command.Parameters.Add("@companyid", SqlDbType.NVarChar).Value = contact.CompanyId;
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)

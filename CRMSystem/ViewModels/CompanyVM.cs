@@ -15,5 +15,6 @@ namespace CRMSystem.ViewModels
         public string Phone { get; set; }
 
         public List<CompanyVM> Companies { get; set; }
+        public List<ContactVM> Contacts { get; set; }
     }
 }
