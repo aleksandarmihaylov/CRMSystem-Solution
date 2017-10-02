@@ -2,6 +2,7 @@
 using CRMSystem.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -24,7 +25,14 @@ namespace CRMSystem.DAL
                 connection.Open();
                 //Create and configure the command
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "INSERT INTO Company(Name, Address, City, Zip, Phone) values('" + company.Name + "', '" + company.Address + "', '" + company.City + "', '" + company.Zip + "', '" + company.Phone + "' )";
+                //making deffence against SQL INJECTION
+                //command.CommandText = "INSERT INTO Company(Name, Address, City, Zip, Phone) values('" + company.Name + "', '" + company.Address + "', '" + company.City + "', '" + company.Zip + "', '" + company.Phone + "' )";
+                command.CommandText = "INSERT INTO Company(Name, Address, City, Zip, Phone) values(@name, @address, @city, @zip, @phone )";
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = company.Name;
+                command.Parameters.Add("@address", SqlDbType.NVarChar).Value = company.Address;
+                command.Parameters.Add("@city", SqlDbType.NVarChar).Value = company.City;
+                command.Parameters.Add("@zip", SqlDbType.NVarChar).Value = company.Zip;
+                command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = company.Phone;
                 //Execute the command
                 command.ExecuteNonQuery();
             }
@@ -124,7 +132,14 @@ namespace CRMSystem.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "UPDATE Company set Name ='" + company.Name + "', Address ='" + company.Address + "', City ='" + company.City + "', Zip ='" + company.Zip + "', Phone ='" + company.Phone + "' WHERE ID = " + company.Id;
+                //defence against sql injection
+                //command.CommandText = "UPDATE Company set Name ='" + company.Name + "', Address ='" + company.Address + "', City ='" + company.City + "', Zip ='" + company.Zip + "', Phone ='" + company.Phone + "' WHERE ID = " + company.Id;
+                command.CommandText = "UPDATE Company set Name = @name , Address = @address, City = @city, Zip = @zip, Phone = @phone WHERE ID = " + company.Id;
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = company.Name;
+                command.Parameters.Add("@address", SqlDbType.NVarChar).Value = company.Address;
+                command.Parameters.Add("@city", SqlDbType.NVarChar).Value = company.City;
+                command.Parameters.Add("@zip", SqlDbType.NVarChar).Value = company.Zip;
+                command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = company.Phone;
                 command.ExecuteNonQuery();
             }
             catch(Exception ex)
