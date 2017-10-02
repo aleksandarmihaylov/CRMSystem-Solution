@@ -1,4 +1,5 @@
 ﻿using CRMSystem.Models;
+using CRMSystem.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -7,14 +8,13 @@ using System.Web;
 
 namespace CRMSystem.DAL
 {
-    public class ContactRepository
+    public class ContactRepository : BaseRepository
     {
         public void SaveContact(Contact contact)
         {
             //save the contact to the database
 
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Connection.ConnectionString;
+            SqlConnection connection = CreateConnection();
 
             try
             {
@@ -26,6 +26,7 @@ namespace CRMSystem.DAL
             catch (Exception ex)
             {
                 //logging
+                Log.LogException(ex);
             }
             finally
             {
@@ -37,8 +38,7 @@ namespace CRMSystem.DAL
         {
             List<Contact> result = new List<Contact>();
 
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Connection.ConnectionString;
+            SqlConnection connection = CreateConnection();
 
             try
             {
@@ -66,6 +66,7 @@ namespace CRMSystem.DAL
             catch (Exception ex)
             {
                 //logging
+                Log.LogException(ex);
             }
             finally
             {
@@ -78,8 +79,7 @@ namespace CRMSystem.DAL
         {
             Contact result = new Contact();
 
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Connection.ConnectionString;
+            SqlConnection connection = CreateConnection();
 
             try
             {
@@ -103,6 +103,7 @@ namespace CRMSystem.DAL
             catch (Exception ex)
             {
                 //logging
+                Log.LogException(ex);
             }
             finally
             {
@@ -113,8 +114,7 @@ namespace CRMSystem.DAL
 
         public void UpdateContact(Contact contact)
         {
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Connection.ConnectionString;
+            SqlConnection connection = CreateConnection();
 
             try
             {
@@ -126,6 +126,7 @@ namespace CRMSystem.DAL
             catch (Exception ex)
             {
                 //logging
+                Log.LogException(ex);
             }
             finally
             {
@@ -135,8 +136,7 @@ namespace CRMSystem.DAL
 
         public void DeleteContact (int id)
         {
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Connection.ConnectionString;
+            SqlConnection connection = CreateConnection();
 
             try
             {
@@ -147,7 +147,8 @@ namespace CRMSystem.DAL
             }
             catch(Exception ex)
             {
-                //logg
+                //logging
+                Log.LogException(ex);
             }
             finally
             {

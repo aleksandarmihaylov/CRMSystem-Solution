@@ -15,7 +15,6 @@ namespace CRMSystem.ViewModels
         public string Zip { get; set; }
         public string Phone { get; set; }
 
-        //Ask the teacher if it is okay like that?
         public string FullName
         {
             get

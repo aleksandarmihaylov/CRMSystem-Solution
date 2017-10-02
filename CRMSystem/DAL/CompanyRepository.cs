@@ -1,4 +1,5 @@
 ﻿using CRMSystem.Models;
+using CRMSystem.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,14 +11,13 @@ namespace CRMSystem.DAL
     /// <summary>
     /// Responsible for communicating with the database for basic CRUD
     /// </summary>
-    public class CompanyRepository
+    public class CompanyRepository : BaseRepository
     {
         public void SaveCompany(Company company)
         {
             //save the company to the database
 
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Connection.ConnectionString;
+            SqlConnection connection = CreateConnection();
 
             try
             {
@@ -30,7 +30,8 @@ namespace CRMSystem.DAL
             }
             catch(Exception ex)
             {
-                //logging 
+                //logging
+                Log.LogException(ex);
             }
             finally
             {
@@ -42,8 +43,7 @@ namespace CRMSystem.DAL
         {
             //Loading all the companies from the database - making the connection, creating and executing the command
             List<Company> result = new List<Company>();
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Connection.ConnectionString;
+            SqlConnection connection = CreateConnection();
 
             try
             {
@@ -69,7 +69,7 @@ namespace CRMSystem.DAL
             catch(Exception ex)
             {
                 //logging
-                //return "Something went wrong! We will get back to it!";
+                Log.LogException(ex);
             }
             finally
             {
@@ -84,8 +84,7 @@ namespace CRMSystem.DAL
         {
             //Loading a company from the database - making the connection, creating and executing the command
             Company result = new Company();
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Connection.ConnectionString;
+            SqlConnection connection = CreateConnection();
 
             try
             {
@@ -107,7 +106,7 @@ namespace CRMSystem.DAL
             catch (Exception ex)
             {
                 //logging
-                //return "Something went wrong! We will get back to it!";
+                Log.LogException(ex);
             }
             finally
             {
@@ -119,8 +118,7 @@ namespace CRMSystem.DAL
 
         public void UpdateCompany(Company company)
         {
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Connection.ConnectionString;
+            SqlConnection connection = CreateConnection();
 
             try
             {
@@ -131,7 +129,8 @@ namespace CRMSystem.DAL
             }
             catch(Exception ex)
             {
-                //logg
+                //logging
+                Log.LogException(ex);
             }
             finally
             {
@@ -141,8 +140,7 @@ namespace CRMSystem.DAL
 
         public void DeleteCompany(int id)
         {
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Connection.ConnectionString;
+            SqlConnection connection = CreateConnection();
 
             try
             {
@@ -155,6 +153,7 @@ namespace CRMSystem.DAL
             catch(Exception ex)
             {
                 //logging
+                Log.LogException(ex);
             }
             finally
             {
