@@ -8,6 +8,7 @@ namespace CRMSystem.DAL
 {
     public class BaseRepository
     {
+        //This is my base repository
         protected SqlConnection CreateConnection()
         {
             SqlConnection connection = new SqlConnection();
