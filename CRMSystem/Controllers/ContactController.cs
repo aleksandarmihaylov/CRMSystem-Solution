@@ -31,6 +31,14 @@ namespace CRMSystem.Controllers
                 contactvm.Phone = contact.Phone;
                 contactvm.CompanyId = contact.CompanyId;
 
+                //This code will return only the name of the company which will be presented into the SHOW view
+                //TO DO REFACTOR THIS !!!! 
+                CompanyRepository companyRepository = new CompanyRepository();
+                Company company = companyRepository.LoadCompany(contactvm.CompanyId);
+                CompanyVM companyVM = new CompanyVM();
+                companyVM.Name = company.Name;
+                contactvm.Company = companyVM;
+
                 contactVMs.Add(contactvm);
             }
 
@@ -82,6 +90,21 @@ namespace CRMSystem.Controllers
         // GET: Contact/Show
         public ActionResult Show(int id)
         {
+            //// This will show the company name this person belongs to
+            //CompanyRepository companyRepository = new CompanyRepository();
+            //Company company = companyRepository.LoadCompanyByCustomerId();
+            //List<CompanyVM> companyVMs = new List<CompanyVM>();
+
+            //foreach (Company company in companies)
+            //{
+            //    CompanyVM cmp = new CompanyVM();
+            //    cmp.Id = company.Id;
+            //    cmp.Name = company.Name;
+
+            //    companyVMs.Add(cmp);
+            //}
+
+
             ContactRepository contactRepository = new ContactRepository();
 
             Contact contact = contactRepository.LoadContact(id);
@@ -94,6 +117,14 @@ namespace CRMSystem.Controllers
             model.Zip = contact.Zip;
             model.Phone = contact.Phone;
             model.CompanyId = contact.CompanyId;
+
+            //This code will return only the name of the company which will be presented into the SHOW view
+            CompanyRepository companyRepository = new CompanyRepository();
+            Company company = companyRepository.LoadCompany(model.CompanyId);
+            CompanyVM companyVM = new CompanyVM();
+            companyVM.Name = company.Name;
+            model.Company = companyVM;
+
             return View(model);
         }
         // GET: Contact/Edit

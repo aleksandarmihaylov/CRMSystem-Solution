@@ -15,7 +15,7 @@
             <th>City</th>
             <th>Zip</th>
             <th>Phone</th>
-            <th>CompanyId</th>
+            <th>Company Name</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -30,7 +30,7 @@
                 <td>@contactvm.Zip</td>
                 <td>@contactvm.Phone</td>
                 @*Put the company name later on (create e method returning a pomany and when we return the - company Company.name or smth like that*@
-                <td>@contactvm.CompanyId</td>
+                <td>@contactvm.Company.Name</td>
                 <td>
                     <a href="/Contact/Show/@contactvm.Id" class="btn btn-primary btn-xs">Show</a>
                     <a href="/Contact/Edit/@contactvm.Id" class="btn btn-warning btn-xs">Edit</a>

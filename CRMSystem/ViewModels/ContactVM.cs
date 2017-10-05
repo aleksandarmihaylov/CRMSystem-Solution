@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +15,9 @@ namespace CRMSystem.ViewModels
         public string City { get; set; }
         public string Zip { get; set; }
         public string Phone { get; set; }
+        //[Range(1, int.MaxValue, ErrorMessage = "You need to select a company")]
+        //TO DO Create and edit only after value 1! 
+        // because dropdown value 0 is please select a company
         public int CompanyId { get; set; }
 
         public string FullName
@@ -26,5 +30,6 @@ namespace CRMSystem.ViewModels
 
         public List<ContactVM> Contacts { get; set; }
         public List<CompanyVM> Companies { get; set; }
+        public CompanyVM Company { get; set; }
     }
 }
