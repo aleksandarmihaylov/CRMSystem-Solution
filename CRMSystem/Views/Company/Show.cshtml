@@ -19,3 +19,8 @@
 <div class="well well-xs">@Model.Zip</div>
 <label>Company Number</label>
 <div class="well well-xs">@Model.Phone</div>
+<label>Contact persons for this company</label>
+@foreach (var contact in Model.Contacts)
+{
+    <a href="/Contact/Show/@contact.Id"><div class="well well-xs">@contact.FullName</div></a>
+}

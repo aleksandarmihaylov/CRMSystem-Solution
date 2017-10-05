@@ -15,7 +15,7 @@ namespace CRMSystem.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your company description page.";
 
             return View();
         }

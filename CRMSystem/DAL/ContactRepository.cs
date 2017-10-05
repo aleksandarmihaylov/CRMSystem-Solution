@@ -86,6 +86,47 @@ namespace CRMSystem.DAL
             return result;
         }
 
+        public List<Contact> LoadSpecificContacts(int id)
+        {
+            List<Contact> result = new List<Contact>();
+
+            SqlConnection connection = CreateConnection();
+
+            try
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT Id, FirstName, LastName, Address, City, Zip, Phone, CompanyId FROM Contact WHERE CompanyId = " + id;
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Contact contact = new Contact();
+                    contact.Id = reader.GetInt32(0);
+                    contact.FirstName = reader.GetString(1);
+                    contact.LastName = reader.GetString(2);
+                    contact.Address = reader.GetString(3);
+                    contact.City = reader.GetString(4);
+                    contact.Zip = reader.GetString(5);
+                    contact.Phone = reader.GetString(6);
+                    contact.CompanyId = reader.GetInt32(7);
+
+                    result.Add(contact);
+                }
+            }
+            catch(Exception ex)
+            {
+                // Logging 
+                Log.LogException(ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
+
+        }
+
         public Contact LoadContact(int id)
         {
             Contact result = new Contact();

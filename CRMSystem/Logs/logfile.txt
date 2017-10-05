@@ -88,3 +88,19 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
    at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
    at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
    at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 110
+--------------------
+5.10.2017 г. 10:16:34
+--------------------
+System.InvalidOperationException: Invalid attempt to read when no data is present.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 103
+--------------------
+5.10.2017 г. 14:45:00
+--------------------
+System.InvalidOperationException: Invalid attempt to read when no data is present.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 103

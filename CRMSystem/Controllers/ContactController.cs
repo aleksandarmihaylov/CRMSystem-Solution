@@ -42,7 +42,23 @@ namespace CRMSystem.Controllers
         // GET: Contact/Create
         public ActionResult Create()
         {
-            return View();
+            // This will render the name of the contact inside a dropdown list in the view
+            CompanyRepository companyRepository = new CompanyRepository();
+            List<Company> companies = companyRepository.LoadAllCompanies();
+            List<CompanyVM> companyVMs = new List<CompanyVM>();
+            
+            foreach (Company company in companies)
+            {
+                CompanyVM cmp = new CompanyVM();
+                cmp.Id = company.Id;
+                cmp.Name = company.Name;
+
+                companyVMs.Add(cmp);
+            }
+
+            ContactVM model = new ContactVM();
+            model.Companies = companyVMs;
+            return View(model);
         }
         // POST: Contact/Create
         [HttpPost]
@@ -83,6 +99,21 @@ namespace CRMSystem.Controllers
         // GET: Contact/Edit
         public ActionResult Edit(int id)
         {
+            // This will render the name of the contact inside a dropdown list in the view
+            CompanyRepository companyRepository = new CompanyRepository();
+            List<Company> companies = companyRepository.LoadAllCompanies();
+            List<CompanyVM> companyVMs = new List<CompanyVM>();
+
+            //ask someone how to do that
+            foreach (Company company in companies)
+            {
+                CompanyVM cmp = new CompanyVM();
+                cmp.Id = company.Id;
+                cmp.Name = company.Name;
+
+                companyVMs.Add(cmp);
+            }
+
             ContactRepository contactRepository = new ContactRepository();
             Contact contact = contactRepository.LoadContact(id);
             ContactVM model = new ContactVM();
@@ -94,7 +125,7 @@ namespace CRMSystem.Controllers
             model.City = contact.City;
             model.Zip = contact.Zip;
             model.Phone = contact.Phone;
-            model.CompanyId = contact.CompanyId;
+            model.Companies = companyVMs;
 
             return View(model);
         }

@@ -63,6 +63,23 @@ namespace CRMSystem.Controllers
         // GET: Company/Show
         public ActionResult Show(int id)
         {
+            // This will render the information of each user in this company
+            ContactRepository contactRepository = new ContactRepository();
+            List<Contact> contacts = contactRepository.LoadSpecificContacts(id);
+            List<ContactVM> contactVMs = new List<ContactVM>();
+
+            //ask someone how to do that
+            foreach (Contact contact in contacts)
+            {
+                //We want only the first and last name of the user
+                ContactVM cont = new ContactVM();
+                cont.Id = contact.Id;
+                cont.FirstName = contact.FirstName;
+                cont.LastName = contact.LastName;
+
+                contactVMs.Add(cont);
+            }
+
             //Showing a company with a list of contacts
             CompanyRepository companyRepository = new CompanyRepository();
             Company company = companyRepository.LoadCompany(id);
@@ -73,6 +90,7 @@ namespace CRMSystem.Controllers
             model.City = company.City;
             model.Zip = company.Zip;
             model.Phone = company.Phone;
+            model.Contacts = contactVMs;
             return View(model);
         }
 
