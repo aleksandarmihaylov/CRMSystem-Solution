@@ -12,6 +12,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Company Name</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -22,6 +23,7 @@
                 <td>@projectvm.Id</td>
                 <td>@projectvm.Name</td>
                 <td>@projectvm.Description</td>
+                <td>@projectvm.Company.Name</td>
                 <td>
                     <a href="/Project/Show/@projectvm.Id" class="btn btn-primary btn-xs">Show</a>
                     <a href="/Project/Edit/@projectvm.Id" class="btn btn-warning btn-xs">Edit</a>
@@ -31,6 +33,7 @@
         }
     </tbody>
 </table>
+<a href="/Project/Create" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Create a new project</a><br />
 @*Create a new task later on*@
 @*<a href="/Task/Create" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Create a new task</a><br />*@
 

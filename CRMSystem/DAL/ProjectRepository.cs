@@ -23,9 +23,10 @@ namespace CRMSystem.DAL
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
                 //defending from SQL injection
-                command.CommandText = "INSERT INTO Project(Name, Description) values(@name, @description)";
+                command.CommandText = "INSERT INTO Project(Name, Description, CompanyId) values(@name, @description, @companyid)";
                 command.Parameters.Add("@name",SqlDbType.NVarChar).Value = project.Name;
                 command.Parameters.Add("@description", SqlDbType.NText).Value = project.Description;
+                command.Parameters.Add("@companyid", SqlDbType.NVarChar).Value = project.CompanyId;
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -49,7 +50,7 @@ namespace CRMSystem.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT Id, Name, Description from Project";
+                command.CommandText = "SELECT Id, Name, Description, CompanyId from Project";
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -58,6 +59,7 @@ namespace CRMSystem.DAL
                     project.Id = reader.GetInt32(0);
                     project.Name = reader.GetString(1);
                     project.Description = reader.GetString(2);
+                    project.CompanyId = reader.GetInt32(3);
 
                     result.Add(project);
                 }
@@ -73,6 +75,43 @@ namespace CRMSystem.DAL
             return result;
         }
 
+        public List<Project> LoadSpecificProjects(int id)
+        {
+            List<Project> result = new List<Project>();
+
+            SqlConnection connection = CreateConnection();
+
+            try
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT Id, Name, Description, CompanyId FROM Project WHERE CompanyId = " + id;
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Project project = new Project();
+                    project.Id = reader.GetInt32(0);
+                    project.Name = reader.GetString(1);
+                    project.Description = reader.GetString(2);
+                    project.CompanyId = reader.GetInt32(3);
+
+                    result.Add(project);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Logging 
+                Log.LogException(ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
+
+        }
+
         //Loading a project from the database - making the connection, creating and executing the command
         public Project LoadProject(int id)
         {
@@ -83,7 +122,7 @@ namespace CRMSystem.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT Id, Name, Description from Project WHERE ID = " + id;
+                command.CommandText = "SELECT Id, Name, Description, CompanyId from Project WHERE ID = " + id;
                 SqlDataReader reader = command.ExecuteReader();
                 // Do we need reader.Read() in order to start reading? 
                 reader.Read();
@@ -92,6 +131,7 @@ namespace CRMSystem.DAL
                 project.Id = reader.GetInt32(0);
                 project.Name = reader.GetString(1);
                 project.Description = reader.GetString(2);
+                project.CompanyId = reader.GetInt32(3);
 
                 result = project;
             }
@@ -115,9 +155,10 @@ namespace CRMSystem.DAL
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
                 //defence against sql injection
-                command.CommandText = "UPDATE Project set Name = @name , Description = @description WHERE ID = " + project.Id;
+                command.CommandText = "UPDATE Project set Name = @name , Description = @description, CompanyId = @companyid WHERE ID = " + project.Id;
                 command.Parameters.Add("@name", SqlDbType.NVarChar).Value = project.Name;
                 command.Parameters.Add("@description", SqlDbType.NText).Value = project.Description;
+                command.Parameters.Add("@companyid", SqlDbType.NVarChar).Value = project.CompanyId;
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)

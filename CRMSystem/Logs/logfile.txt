@@ -255,3 +255,51 @@ System.Data.SqlClient.SqlException (0x80131904): The parameterized query '(@name
    at CRMSystem.DAL.ProjectRepository.UpdateProject(Project project) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ProjectRepository.cs:line 121
 ClientConnectionId:02d1e326-9f8d-47d8-8e93-97ef7b281da7
 Error Number:8178,State:1,Class:16
+--------------------
+7.10.2017 г. 17:05:43
+--------------------
+System.InvalidOperationException: Invalid attempt to read when no data is present.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.CompanyRepository.LoadCompany(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\CompanyRepository.cs:line 105
+--------------------
+7.10.2017 г. 17:05:49
+--------------------
+System.InvalidOperationException: Invalid attempt to read when no data is present.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.CompanyRepository.LoadCompany(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\CompanyRepository.cs:line 105
+--------------------
+7.10.2017 г. 17:05:54
+--------------------
+System.InvalidOperationException: Invalid attempt to read when no data is present.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.CompanyRepository.LoadCompany(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\CompanyRepository.cs:line 105
+--------------------
+7.10.2017 г. 17:05:57
+--------------------
+System.InvalidOperationException: Invalid attempt to read when no data is present.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.CompanyRepository.LoadCompany(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\CompanyRepository.cs:line 105
+--------------------
+7.10.2017 г. 17:06:53
+--------------------
+System.InvalidOperationException: Invalid attempt to read when no data is present.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.CompanyRepository.LoadCompany(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\CompanyRepository.cs:line 105
+--------------------
+7.10.2017 г. 17:06:56
+--------------------
+System.InvalidOperationException: Invalid attempt to read when no data is present.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.CompanyRepository.LoadCompany(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\CompanyRepository.cs:line 105

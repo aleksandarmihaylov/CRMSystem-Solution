@@ -8,6 +8,16 @@
 
 <a href="/Project/" class="btn btn-primary btn-xs">Back</a><br />
 <form action="/Project/Edit" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label>Project Company</label>
+        <select name="CompanyId">
+            <option value="0">Please select a company</option>
+            @foreach (var company in Model.Companies)
+            {
+                <option value="@company.Id">@company.Name</option>
+            }
+        </select>
+    </div>
     <input type="hidden" name="Id" value="@Model.Id">
     <div class="form-group">
         <label>Project Name</label>

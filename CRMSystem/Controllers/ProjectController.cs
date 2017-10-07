@@ -25,7 +25,15 @@ namespace CRMSystem.Controllers
                 projectVM.Id = pr.Id;
                 projectVM.Name = pr.Name;
                 projectVM.Description = pr.Description;
-                
+                projectVM.CompanyId = pr.CompanyId;
+
+                //This code will return only the name of the company which will be presented into the SHOW/Index view
+                CompanyRepository companyRepository = new CompanyRepository();
+                Company company = companyRepository.LoadCompany(projectVM.CompanyId);
+                CompanyVM companyVM = new CompanyVM();
+                companyVM.Name = company.Name;
+                projectVM.Company = companyVM;
+
                 projectVMs.Add(projectVM);
             }
 
@@ -37,7 +45,23 @@ namespace CRMSystem.Controllers
         // GET: Project/Create
         public ActionResult Create()
         {
-            return View();
+            // This will render the name of the contact inside a dropdown list in the view
+            CompanyRepository companyRepository = new CompanyRepository();
+            List<Company> companies = companyRepository.LoadAllCompanies();
+            List<CompanyVM> companyVMs = new List<CompanyVM>();
+
+            foreach (Company company in companies)
+            {
+                CompanyVM cmp = new CompanyVM();
+                cmp.Id = company.Id;
+                cmp.Name = company.Name;
+
+                companyVMs.Add(cmp);
+            }
+
+            ProjectVM model = new ProjectVM();
+            model.Companies = companyVMs;
+            return View(model);
         }
         // POST: Project/Create
         [HttpPost]
@@ -46,6 +70,7 @@ namespace CRMSystem.Controllers
             Project project = new Project();
             project.Name = model.Name;
             project.Description = model.Description;
+            project.CompanyId = model.CompanyId;
 
             ProjectRepository projectRepository = new ProjectRepository();
             projectRepository.SaveProject(project);
@@ -61,12 +86,37 @@ namespace CRMSystem.Controllers
             model.Id = project.Id;
             model.Name = project.Name;
             model.Description = project.Description;
+            model.CompanyId = project.CompanyId;
+
+            //This code will return only the name of the company which will be presented into the SHOW/Index view
+            CompanyRepository companyRepository = new CompanyRepository();
+            Company company = companyRepository.LoadCompany(model.CompanyId);
+            CompanyVM companyVM = new CompanyVM();
+            companyVM.Name = company.Name;
+            model.Company = companyVM;
+
 
             return View(model);
         }
         //GET: Project/Edit
         public ActionResult Edit(int id)
         {
+            // This will render the name of the contact inside a dropdown list in the view
+            CompanyRepository companyRepository = new CompanyRepository();
+            List<Company> companies = companyRepository.LoadAllCompanies();
+            List<CompanyVM> companyVMs = new List<CompanyVM>();
+
+            //ask someone how to do that
+            foreach (Company company in companies)
+            {
+                CompanyVM cmp = new CompanyVM();
+                cmp.Id = company.Id;
+                cmp.Name = company.Name;
+
+                companyVMs.Add(cmp);
+            }
+
+
             ProjectRepository projectRepository = new ProjectRepository();
             Project project = projectRepository.LoadProject(id);
             ProjectVM model = new ProjectVM();
@@ -74,6 +124,7 @@ namespace CRMSystem.Controllers
             model.Id = project.Id;
             model.Name = project.Name;
             model.Description = project.Description;
+            model.Companies = companyVMs;
 
             return View(model);
         }
@@ -86,6 +137,7 @@ namespace CRMSystem.Controllers
             project.Id = model.Id;
             project.Name = model.Name;
             project.Description = model.Description;
+            project.CompanyId = model.CompanyId;
 
             ProjectRepository projectRepository = new ProjectRepository();
 
