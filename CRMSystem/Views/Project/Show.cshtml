@@ -1,0 +1,15 @@
+﻿@model CRMSystem.ViewModels.ProjectVM
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show project</h2>
+
+<a href="/Project/" class="btn btn-primary btn-xs">Back</a><br />
+<label>Project ID</label>
+<div class="well well-xs">@Model.Id</div>
+<label>Project Name</label>
+<div class="well well-xs">@Model.Name</div>
+<label>Project Description</label>
+<div class="well well-xs">@Model.Description</div>

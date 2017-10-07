@@ -1,0 +1,21 @@
+﻿@model CRMSystem.ViewModels.ProjectVM
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit your project</h2>
+
+<a href="/Project/" class="btn btn-primary btn-xs">Back</a><br />
+<form action="/Project/Edit" method="post" class="form-horizontal">
+    <input type="hidden" name="Id" value="@Model.Id">
+    <div class="form-group">
+        <label>Project Name</label>
+        <input type="text" name="Name" required class="form-control" value="@Model.Name" />
+    </div>
+    <div class="form-group">
+        <label>Project Description</label>
+        <input type="text" name="Description" required class="form-control" value="@Model.Description" />
+    </div>
+    <input type="submit" name="SaveButton" class="btn btn-success" value="Update" />
+</form>

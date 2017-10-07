@@ -1,0 +1,36 @@
+﻿@model CRMSystem.ViewModels.ProjectVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All projects</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var projectvm in Model.Projects)
+        {
+            <tr>
+                <td>@projectvm.Id</td>
+                <td>@projectvm.Name</td>
+                <td>@projectvm.Description</td>
+                <td>
+                    <a href="/Project/Show/@projectvm.Id" class="btn btn-primary btn-xs">Show</a>
+                    <a href="/Project/Edit/@projectvm.Id" class="btn btn-warning btn-xs">Edit</a>
+                    <a href="/Project/Delete/@projectvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('You are about to delete a company. Are you sure you want to continue?')">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*Create a new task later on*@
+@*<a href="/Task/Create" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Create a new task</a><br />*@
+
