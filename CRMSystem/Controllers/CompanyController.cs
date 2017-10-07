@@ -80,6 +80,20 @@ namespace CRMSystem.Controllers
                 contactVMs.Add(cont);
             }
 
+            //this will render information of each project in this company 
+            ProjectRepository projectRepository = new ProjectRepository();
+            List<Project> projects = projectRepository.LoadSpecificProjects(id);
+            List<ProjectVM> projectVMs = new List<ProjectVM>();
+
+            foreach (Project project in projects)
+            {
+                ProjectVM pr = new ProjectVM();
+                pr.Id = project.Id;
+                pr.Name = project.Name;
+
+                projectVMs.Add(pr);
+            }
+
             //Showing a company with a list of contacts
             CompanyRepository companyRepository = new CompanyRepository();
             Company company = companyRepository.LoadCompany(id);
@@ -91,6 +105,7 @@ namespace CRMSystem.Controllers
             model.Zip = company.Zip;
             model.Phone = company.Phone;
             model.Contacts = contactVMs;
+            model.Projects = projectVMs;
             return View(model);
         }
 

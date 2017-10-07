@@ -24,3 +24,8 @@
 {
     <a href="/Contact/Show/@contact.Id"><div class="well well-xs">@contact.FullName</div></a>
 }
+<label>Projects that this company has</label>
+@foreach (var project in Model.Projects)
+{
+    <a href="/Project/Show/@project.Id"><div class="well well-xs">@project.Name</div></a>
+}
