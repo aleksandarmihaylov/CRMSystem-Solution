@@ -152,10 +152,12 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="DAL\CompanyRepository.cs" />
     <Compile Include="DAL\BaseRepository.cs" />
     <Compile Include="DAL\ContactRepository.cs" />
     <Compile Include="DAL\ProjectRepository.cs" />
+    <Compile Include="DAL\Task.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,6 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Task\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -303,3 +303,61 @@ System.InvalidOperationException: Invalid attempt to read when no data is presen
    at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
    at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
    at CRMSystem.DAL.CompanyRepository.LoadCompany(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\CompanyRepository.cs:line 105
+--------------------
+9.10.2017 г. 13:34:40
+--------------------
+System.Data.SqlClient.SqlException (0x80131904): The UPDATE statement conflicted with the FOREIGN KEY constraint "FK_Contact_Company". The conflict occurred in database "CentiSoftCRM", table "dbo.Company", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at CRMSystem.DAL.ContactRepository.UpdateContact(Contact contact) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 186
+ClientConnectionId:253c71d0-b589-469e-aa6d-a1b81d38d992
+Error Number:547,State:0,Class:16
+--------------------
+9.10.2017 г. 13:38:27
+--------------------
+System.InvalidOperationException: Invalid attempt to read when no data is present.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 144
+--------------------
+9.10.2017 г. 13:38:30
+--------------------
+System.InvalidOperationException: Invalid attempt to read when no data is present.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 144
+--------------------
+9.10.2017 г. 13:38:33
+--------------------
+System.InvalidOperationException: Invalid attempt to read when no data is present.
+   at System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   at System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   at System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   at CRMSystem.DAL.ContactRepository.LoadContact(Int32 id) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 144
+--------------------
+9.10.2017 г. 14:07:57
+--------------------
+System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Contact_Company". The conflict occurred in database "CentiSoftCRM", table "dbo.Company", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at CRMSystem.DAL.ContactRepository.SaveContact(Contact contact) in D:\University\Web Development sep2017\Semester I\Backend\C# Exercises\CRMSystem Solution\CRMSystem\DAL\ContactRepository.cs:line 34
+ClientConnectionId:709a16d3-4448-4507-b4fb-955ff8b787aa
+Error Number:547,State:0,Class:16

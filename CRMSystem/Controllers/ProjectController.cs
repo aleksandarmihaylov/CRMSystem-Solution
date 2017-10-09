@@ -124,7 +124,9 @@ namespace CRMSystem.Controllers
             model.Id = project.Id;
             model.Name = project.Name;
             model.Description = project.Description;
+            model.CompanyId = project.CompanyId;
             model.Companies = companyVMs;
+
 
             return View(model);
         }

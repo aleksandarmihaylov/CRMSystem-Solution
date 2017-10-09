@@ -11,10 +11,17 @@
     <div class="form-group">
         <label>Project Company</label>
         <select name="CompanyId">
-            <option value="0">Please select a company</option>
+            <option value="0" disabled>Please select a company</option>
             @foreach (var company in Model.Companies)
             {
-                <option value="@company.Id">@company.Name</option>
+                if (company.Id == Model.CompanyId)
+                {
+                    <option value="@company.Id" selected>@company.Name</option>
+                }
+                else
+                {
+                    <option value="@company.Id">@company.Name</option>
+                }
             }
         </select>
     </div>

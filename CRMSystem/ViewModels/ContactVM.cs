@@ -29,7 +29,9 @@ namespace CRMSystem.ViewModels
         }
 
         public List<ContactVM> Contacts { get; set; }
+        // for creating a contact we need a list of companies
         public List<CompanyVM> Companies { get; set; }
+        //for presenting the company this contact is working at
         public CompanyVM Company { get; set; }
     }
 }

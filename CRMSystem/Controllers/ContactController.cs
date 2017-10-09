@@ -15,7 +15,7 @@ namespace CRMSystem.Controllers
         public ActionResult Index()
         {
             ContactRepository contactRepository = new ContactRepository();
-
+            CompanyRepository companyRepository = new CompanyRepository();
             List<Contact> contacts = contactRepository.LoadAllContacts();
             List<ContactVM> contactVMs = new List<ContactVM>();
 
@@ -32,8 +32,6 @@ namespace CRMSystem.Controllers
                 contactvm.CompanyId = contact.CompanyId;
 
                 //This code will return only the name of the company which will be presented into the SHOW view
-                //TO DO REFACTOR THIS !!!! 
-                CompanyRepository companyRepository = new CompanyRepository();
                 Company company = companyRepository.LoadCompany(contactvm.CompanyId);
                 CompanyVM companyVM = new CompanyVM();
                 companyVM.Name = company.Name;
@@ -156,6 +154,7 @@ namespace CRMSystem.Controllers
             model.City = contact.City;
             model.Zip = contact.Zip;
             model.Phone = contact.Phone;
+            model.CompanyId = contact.CompanyId;
             model.Companies = companyVMs;
 
             return View(model);

@@ -9,8 +9,8 @@
 <form action="/Project/Create" method="post" class="form-horizontal">
     <div class="form-group">
         <label>Project Company</label>
-        <select name="CompanyId">
-            <option value="0">Please select a company</option>
+        <select name="CompanyId" required>
+            <option value="0" disabled>Please select a company</option>
             @foreach (var company in Model.Companies)
             {
                 <option value="@company.Id">@company.Name</option>
