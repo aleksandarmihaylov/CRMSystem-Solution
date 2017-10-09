@@ -56,14 +56,11 @@
         <input type="number" name="Hours" required class="form-control" value="@Model.Hours" />
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.IsFinished, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <label>Is the task finished</label>
             <div class="checkbox">
                 @Html.EditorFor(model => model.IsFinished)
-                @Html.ValidationMessageFor(model => model.IsFinished, "", new { @class = "text-danger" })
             </div>
         </div>
-    </div>
     <input type="submit" name="SaveButton" class="btn btn-success" value="Update" />
 </form>
 
