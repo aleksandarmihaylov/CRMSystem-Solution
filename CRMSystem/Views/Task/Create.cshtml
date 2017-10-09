@@ -1,0 +1,44 @@
+﻿@model CRMSystem.ViewModels.TaskVM
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create a task</h2>
+<a href="/Task/" class="btn btn-primary btn-xs">Back</a><br />
+<form action="/Task/Create" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label>Task Project</label>
+        <select name="ProjectId" required>
+            <option value="0" disabled>Please select a project</option>
+            @foreach (var project in Model.Projects)
+            {
+                <option value="@project.Id">@project.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Task Contact</label>
+        <select name="ContactId" required>
+            <option value="0" disabled>Please select a contact</option>
+            @foreach (var contact in Model.Contacts)
+            {
+                <option value="@contact.Id">@contact.FullName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Task Name</label>
+        <input type="text" name="Name" required class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Task Description</label>
+        <input type="text" name="Description" required class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Task Hours</label>
+        <input type="number" name="Hours" class="form-control" />
+    </div>
+    <input type="submit" name="SaveButton" class="btn btn-success" value="Save" />
+</form>
+

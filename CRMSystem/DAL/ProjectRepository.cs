@@ -95,7 +95,7 @@ namespace CRMSystem.DAL
                     project.Name = reader.GetString(1);
                     project.Description = reader.GetString(2);
                     project.CompanyId = reader.GetInt32(3);
-
+                    
                     result.Add(project);
                 }
             }

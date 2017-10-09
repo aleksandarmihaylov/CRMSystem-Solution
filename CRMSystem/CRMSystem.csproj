@@ -157,18 +157,20 @@
     <Compile Include="DAL\BaseRepository.cs" />
     <Compile Include="DAL\ContactRepository.cs" />
     <Compile Include="DAL\ProjectRepository.cs" />
-    <Compile Include="DAL\Task.cs" />
+    <Compile Include="DAL\TaskRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Log.cs" />
     <Compile Include="ViewModels\CompanyVM.cs" />
     <Compile Include="ViewModels\ContactVM.cs" />
     <Compile Include="ViewModels\ProjectVM.cs" />
+    <Compile Include="ViewModels\TaskVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -220,10 +222,13 @@
     <Content Include="Views\Project\Create.cshtml" />
     <Content Include="Views\Project\Show.cshtml" />
     <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Task\Show.cshtml" />
+    <Content Include="Views\Task\Create.cshtml" />
+    <Content Include="Views\Task\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Task\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

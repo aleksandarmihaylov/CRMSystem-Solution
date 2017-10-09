@@ -15,6 +15,7 @@ namespace CRMSystem.Controllers
         public ActionResult Index()
         {
             ProjectRepository projectRepository = new ProjectRepository();
+            CompanyRepository companyRepository = new CompanyRepository();
 
             List<Project> projects = projectRepository.LoadAllProjects();
             List<ProjectVM> projectVMs = new List<ProjectVM>();
@@ -28,7 +29,6 @@ namespace CRMSystem.Controllers
                 projectVM.CompanyId = pr.CompanyId;
 
                 //This code will return only the name of the company which will be presented into the SHOW/Index view
-                CompanyRepository companyRepository = new CompanyRepository();
                 Company company = companyRepository.LoadCompany(projectVM.CompanyId);
                 CompanyVM companyVM = new CompanyVM();
                 companyVM.Name = company.Name;

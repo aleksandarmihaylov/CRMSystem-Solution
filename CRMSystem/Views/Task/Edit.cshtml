@@ -1,0 +1,69 @@
+﻿@model CRMSystem.ViewModels.TaskVM
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit a task</h2>
+
+<a href="/Task/" class="btn btn-primary btn-xs">Back</a><br />
+<form action="/Task/Edit" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label>Task Project</label>
+        <select name="ProjectId">
+            <option value="0" disabled>Please select a project</option>
+            @foreach (var project in Model.Projects)
+            {
+                if (project.Id == Model.ProjectId)
+                {
+                    <option value="@project.Id" selected>@project.Name</option>
+                }
+                else
+                {
+                    <option value="@project.Id">@project.Name</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Task Contact</label>
+        <select name="ContactId">
+            <option value="0" disabled>Please select a contact</option>
+            @foreach (var contact in Model.Contacts)
+            {
+                if (contact.Id == Model.ContactId)
+                {
+                    <option value="@contact.Id" selected>@contact.FullName</option>
+                }
+                else
+                {
+                    <option value="@contact.Id">@contact.FullName</option>
+                }
+            }
+        </select>
+    </div>
+    <input type="hidden" name="Id" value="@Model.Id">
+    <div class="form-group">
+        <label>Task Name</label>
+        <input type="text" name="Name" required class="form-control" value="@Model.Name" />
+    </div>
+    <div class="form-group">
+        <label>Task Description</label>
+        <input type="text" name="Description" required class="form-control" value="@Model.Description" />
+    </div>
+    <div class="form-group">
+        <label>Task Hours</label>
+        <input type="number" name="Hours" required class="form-control" value="@Model.Hours" />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsFinished, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsFinished)
+                @Html.ValidationMessageFor(model => model.IsFinished, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <input type="submit" name="SaveButton" class="btn btn-success" value="Update" />
+</form>
+

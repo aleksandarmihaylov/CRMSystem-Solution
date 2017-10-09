@@ -1,0 +1,44 @@
+﻿@model CRMSystem.ViewModels.TaskVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All tasks</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Hours</th>
+            <th>Is the project finished</th>
+            <th>Contact Name</th>
+            <th>Project Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var taskvm in Model.Tasks)
+        {
+            <tr>
+                <td>@taskvm.Id</td>
+                <td>@taskvm.Name</td>
+                <td>@taskvm.Description</td>
+                <td>@taskvm.Hours</td>
+                <td>@taskvm.IsFinished</td>
+                <td>@taskvm.Contact.FullName</td>
+                <td>@taskvm.Project.Name</td>
+                <td>
+                    @*Dont really need a show task for now since it will present the same info*@
+                    @*<a href="/Task/Show/@taskvm.Id" class="btn btn-primary btn-xs">Show</a>*@
+                    <a href="/Task/Edit/@taskvm.Id" class="btn btn-warning btn-xs">Edit</a>
+                    <a href="/Task/Delete/@taskvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('You are about to delete a company. Are you sure you want to continue?')">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Task/Create" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Create a new Task</a><br />
+<a href="/Project/Create" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Create a new project</a><br />
