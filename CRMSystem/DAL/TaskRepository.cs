@@ -81,6 +81,90 @@ namespace CRMSystem.DAL
             return result;
         }
 
+        //this will load all active tasks for this contact
+        public List<Task> LoadAllActiveContactTasks(int id)
+        {
+            List<Task> result = new List<Task>();
+
+            SqlConnection connection = CreateConnection();
+
+            try
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT Id, Name, Description, Hours, IsFinished, ContactId, ProjectId FROM Task WHERE IsFinished = " + 0 + "AND ContactId = " + id;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Task task = new Task();
+                    task.Id = reader.GetInt32(0);
+                    task.Name = reader.GetString(1);
+                    task.Description = reader.GetString(2);
+                    task.Hours = reader.GetInt32(3);
+                    task.IsFinished = reader.GetBoolean(4);
+                    task.ContactId = reader.GetInt32(5);
+                    task.ProjectId = reader.GetInt32(6);
+
+                    result.Add(task);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Log.LogException(ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
+        //This will list all the active tasks belonging to a project
+        public List<Task> LoadAllActiveProjectTasks(int id)
+        {
+            List<Task> result = new List<Task>();
+
+            SqlConnection connection = CreateConnection();
+
+            try
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT Id, Name, Description, Hours, IsFinished, ContactId, ProjectId FROM Task WHERE IsFinished = " + 0 + "AND ProjectId = " + id;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Task task = new Task();
+                    task.Id = reader.GetInt32(0);
+                    task.Name = reader.GetString(1);
+                    task.Description = reader.GetString(2);
+                    task.Hours = reader.GetInt32(3);
+                    task.IsFinished = reader.GetBoolean(4);
+                    task.ContactId = reader.GetInt32(5);
+                    task.ProjectId = reader.GetInt32(6);
+
+                    result.Add(task);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Log.LogException(ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
         public Task LoadTask(int id)
         {
             Task result = new Task();

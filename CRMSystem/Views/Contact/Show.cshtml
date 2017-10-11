@@ -21,4 +21,9 @@
 <div class="well well-xs">@Model.Phone</div>
 <label>Contact Company Name</label>
 <div class="well well-xs">@Model.Company.Name</div>
+<label>Active tasks this contact is assigned to do</label>
+@foreach (var task in Model.Tasks)
+{
+    <a href="/Task/Show/@task.Id"><div class="well well-xs">@task.Name</div></a>
+}
 

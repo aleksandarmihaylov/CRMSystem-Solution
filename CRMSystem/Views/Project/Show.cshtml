@@ -15,3 +15,8 @@
 <div class="well well-xs">@Model.Description</div>
 <label>Project Company Name</label>
 <div class="well well-xs">@Model.Company.Name</div>
+<label>Active tasks this project has</label>
+@foreach (var task in Model.Tasks)
+{
+    <a href="/Task/Show/@task.Id"><div class="well well-xs">@task.Name</div></a>
+}

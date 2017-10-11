@@ -33,5 +33,6 @@ namespace CRMSystem.ViewModels
         public List<CompanyVM> Companies { get; set; }
         //for presenting the company this contact is working at
         public CompanyVM Company { get; set; }
+        public List<TaskVM> Tasks { get; set; }
     }
 }

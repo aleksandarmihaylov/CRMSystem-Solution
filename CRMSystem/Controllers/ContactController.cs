@@ -121,7 +121,21 @@ namespace CRMSystem.Controllers
             Company company = companyRepository.LoadCompany(model.CompanyId);
             CompanyVM companyVM = new CompanyVM();
             companyVM.Name = company.Name;
+
+            //This code will return only the name of the tasks this user is working on which is still active
+            TaskRepository taskRepository = new TaskRepository();
+            List<Task> tasks = taskRepository.LoadAllActiveContactTasks(id);
+            List<TaskVM> taskVMs = new List<TaskVM>();
+
+            foreach (Task task in tasks)
+            {
+                TaskVM tsk = new TaskVM();
+                tsk.Id = task.Id;
+                tsk.Name = task.Name;
+                taskVMs.Add(tsk);
+            }
             model.Company = companyVM;
+            model.Tasks = taskVMs;
 
             return View(model);
         }

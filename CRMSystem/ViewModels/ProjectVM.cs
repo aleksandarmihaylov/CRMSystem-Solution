@@ -15,6 +15,7 @@ namespace CRMSystem.ViewModels
         public List<ProjectVM> Projects { get; set; }
         public List<CompanyVM> Companies { get; set; }
         public CompanyVM Company { get; set; }
+        public List<TaskVM> Tasks { get; set; }
         //list of tasks later on
     }
 }
