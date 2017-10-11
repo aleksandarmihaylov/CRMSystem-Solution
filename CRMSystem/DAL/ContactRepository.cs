@@ -85,7 +85,7 @@ namespace CRMSystem.DAL
             }
             return result;
         }
-
+        //this will return a specific contact working in this company with the given id
         public List<Contact> LoadSpecificContacts(int id)
         {
             List<Contact> result = new List<Contact>();

@@ -107,9 +107,36 @@ namespace CRMSystem.Controllers
         }
 
         // GET: Task/Show
-        public ActionResult Show()
+        public ActionResult Show(int id)
         {
-            return View();
+            TaskRepository taskRepository = new TaskRepository();
+            ContactRepository contactRepository = new ContactRepository();
+            ProjectRepository projectRepository = new ProjectRepository();
+            Task task = taskRepository.LoadTask(id);
+            TaskVM model = new TaskVM();
+
+            model.Id = task.Id;
+            model.Name = task.Name;
+            model.Description = task.Description;
+            model.Hours = task.Hours;
+            model.IsFinished = task.IsFinished;
+            model.ContactId = task.ContactId;
+            model.ProjectId = task.ProjectId;
+
+            //this will load the contact assigned to this task / his first and last name
+            Contact contact = contactRepository.LoadContact(model.ContactId);
+            ContactVM contactVM = new ContactVM();
+            contactVM.FirstName = contact.FirstName;
+            contactVM.LastName = contact.LastName;
+            //this will load the project name which is this task from
+            Project project = projectRepository.LoadProject(model.ProjectId);
+            ProjectVM projectVM = new ProjectVM();
+            projectVM.Name = project.Name;
+
+            model.Contact = contactVM;
+            model.Project = projectVM;
+
+            return View(model);
         }
         // GET: Task/Edit
         public ActionResult Edit(int id)

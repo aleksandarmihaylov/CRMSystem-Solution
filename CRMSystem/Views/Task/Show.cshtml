@@ -6,3 +6,18 @@
 
 <h2>Show a task</h2>
 
+<a href="/Task/" class="btn btn-primary btn-xs">Back</a><br />
+<label>Task ID</label>
+<div class="well well-xs">@Model.Id</div>
+<label>Task Name</label>
+<div class="well well-xs">@Model.Name</div>
+<label>Task Description</label>
+<div class="well well-xs">@Model.Description</div>
+<label>Task Hours</label>
+<div class="well well-xs">@Model.Hours</div>
+<label>Is the task finished</label>
+<div class="well well-xs">@Model.IsFinished</div>
+<label>Contact doing this task</label>
+<div class="well well-xs">@Model.Contact.FullName</div>
+<label>Project this task is for</label>
+<div class="well well-xs">@Model.Project.Name</div>
